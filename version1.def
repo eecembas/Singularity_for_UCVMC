@@ -1,0 +1,21 @@
+Bootstrap: shub
+From: ubuntu
+
+%post
+    echo "Installing Development Tools YUM group"
+    yum -y groupinstall "Development Tools"
+    echo "Installing OpenMPI into container..."
+
+    # Here we are at the base, /, of the container
+    ggit clone https://github.com/SCECCode/UCVMC.git
+
+    # Now at /ompi
+    cd UCVMC
+    ./get_large_files.py
+    ./check_largefiles_md5.py
+    ./stage_large_files.py
+    ./ucvm_setup.py
+    make check
+
+    #install Python Modules
+    pip3 install Python basemap basemap-data-hires matplotlib
