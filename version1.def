@@ -7,7 +7,7 @@ From: ubuntu
     echo "Installing OpenMPI into container..."
 
     # Here we are at the base, /, of the container
-    ggit clone https://github.com/SCECCode/UCVMC.git
+    git clone https://github.com/SCECCode/UCVMC.git
 
     # Now at /ompi
     cd UCVMC
